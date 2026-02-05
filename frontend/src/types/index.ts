@@ -1,0 +1,96 @@
+// src/types/index.ts
+
+// Export all types from a single entry point
+export * from './common.types';
+export * from './auth.types';
+export * from './student.types';
+export * from './report.types';
+
+
+// =====================================================
+// COMMON/SHARED TYPES
+// =====================================================
+
+export interface ApiError {
+  message: string;
+  errors?: Record<string, string[]>;
+  status?: number;
+}
+
+export interface ApiResponse<T = unknown> {
+  data: T;
+  message?: string;
+}
+
+export interface PaginationMeta {
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  total: number;
+  from: number;
+  to: number;
+}
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  total: number;
+  from: number;
+  to: number;
+}
+
+// =====================================================
+// UI COMPONENT TYPES
+// =====================================================
+
+export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'outline';
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+export type BadgeVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'gray';
+export type BadgeSize = 'sm' | 'md' | 'lg';
+
+export type AlertType = 'success' | 'error' | 'warning' | 'info';
+
+export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
+
+// =====================================================
+// FORM TYPES
+// =====================================================
+
+export interface FormField {
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'password' | 'number' | 'tel' | 'date' | 'select' | 'textarea' | 'checkbox';
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  options?: { value: string | number; label: string }[];
+  validation?: {
+    min?: number;
+    max?: number;
+    pattern?: RegExp;
+    message?: string;
+  };
+}
+
+export interface FormErrors {
+  [key: string]: string;
+}
+
+// =====================================================
+// UTILITY TYPES
+// =====================================================
+
+export type Nullable<T> = T | null;
+export type Optional<T> = T | undefined;
+export type Maybe<T> = T | null | undefined;
+
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+export type ValueOf<T> = T[keyof T];
+
+export type Awaited<T> = T extends Promise<infer U> ? U : T;
