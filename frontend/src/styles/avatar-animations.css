@@ -1,0 +1,105 @@
+/* Avatar Animations - Interactive SVG Character (CodePen Inspired) */
+
+/* Breathing animation for lifelike feel */
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.02); 
+  }
+}
+
+/* Eye tracking and interactions */
+.avatar-eye {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  transform-origin: center;
+}
+
+.avatar-eye:hover {
+  transform: scale(1.2);
+}
+
+/* Avatar container animations */
+.avatar-container {
+  animation: breathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Avatar focus states - responds to input focus */
+.avatar-focused {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Eye movement tracking - follows cursor/input */
+.eye-tracking {
+  transition: transform 0.2s ease-out;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+.avatar-blinking {
+  animation: blink 4s infinite;
+}
+
+/* Avatar responsiveness */
+@media (max-width: 640px) {
+  .avatar-container {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+@media (min-width: 641px) {
+  .avatar-container {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Enhanced hover effects */
+.avatar-container:hover .avatar-eye {
+  transform: scale(1.3);
+  transition: transform 0.2s ease;
+}
+
+/* Input response animations */
+.avatar-input-focus {
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  100% { 
+    transform: scale(1.05) rotate(-2deg); 
+  }
+}
+
+/* Eye covering for password input */
+.eye-cover {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.eye-cover.visible {
+  opacity: 1;
+}
+
+/* Eye tracking for typing */
+.eye-following {
+  transform-origin: center;
+  transition: transform 0.1s ease-out;
+}
+
+/* Avatar hands covering eyes */
+.avatar-hands-covering {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}

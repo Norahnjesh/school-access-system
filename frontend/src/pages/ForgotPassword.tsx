@@ -6,7 +6,7 @@ import ForgotPasswordForm from '../components/auth/ForgotPasswordForm';
 
 const ForgotPassword: React.FC = () => {
   return (
-    <AuthLayout>
+    <AuthLayout title="Forgot Password">
       <ForgotPasswordForm />
     </AuthLayout>
   );
